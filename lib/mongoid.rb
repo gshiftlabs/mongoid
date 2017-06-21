@@ -23,11 +23,31 @@ require "mongoid/document"
 require "mongoid/tasks/database"
 require "mongoid/query_cache"
 
+
+###################################
+#
+#  I commented this out because we
+#  put a fake Rails class in engine
+#  so certain gems work. After the
+#  rails 5 upgrade, a bunch of stuff now
+#  tries to integrate with rails by
+#  checking if Rails exists. this sucks
+#  because if we remove Rails class,
+#  other gems will blow up.
+#
+#  yucky having to fork gems for this...
+#  sorry for the pain this causes.
+#
+###################################
+
 # If we are using Rails then we will include the Mongoid railtie. This has all
 # the nifty initializers that Mongoid needs.
-if defined?(Rails)
-  require "mongoid/railtie"
-end
+# if defined?(Rails)
+#   require "mongoid/railtie"
+# end
+
+###################################
+###################################
 
 # add english load path by default
 I18n.load_path << File.join(File.dirname(__FILE__), "config", "locales", "en.yml")
